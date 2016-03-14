@@ -1,12 +1,11 @@
-CC=gcc
+all: release	
+hell.o: hello_world.c
+	gcc -c hello_world.c -o hell.o
+hello: hell.o
+	gcc -s hell.o -o hello_world
 
-TASK=hello_world
-
-all: $(TASK)
-
-hello_world:
-	$(CC) $(TASK).c -o $(TASK).o -c
-	$(CC) -s $(TASK).o -o $(TASK)
-
+release: hello
+	rm -f hell.o
 clean:
-	rm -f *.o $(TASK)
+	rm -f hell.o hello_world
+build:clean all
