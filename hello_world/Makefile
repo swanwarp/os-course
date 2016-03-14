@@ -1,11 +1,10 @@
-all: release	
-hell.o: hello_world.c
-	gcc -c hello_world.c -o hell.o
-hello: hell.o
-	gcc -s hell.o -o hello_world
+CC=gcc
 
-release: hello
-	rm -f hell.o
+all: hello_world
+
+hello_world:
+	$(CC) hello_world.c -o hello_world.o -c
+	$(CC) -s hello_world.o -o hello_world
+
 clean:
-	rm -f hell.o hello_world
-build:clean all
+	rm -f *.o hello_world
